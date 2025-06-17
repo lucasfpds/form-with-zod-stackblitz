@@ -1,8 +1,15 @@
+import AnimatedForm from './AnimatedForm'; // Importa o novo formulário
+import './App.css'; // Se você tiver um App.css global
+
 function App() {
   return (
-    <div>
-      <h1>Hello World React!</h1>
-      <p>Configuração mínima funcionando</p>
+    <div className="App">
+      <header className="App-header">
+        <h1>Bem-vindo ao Formulário Animado!</h1>
+      </header>
+      <main>
+        <AnimatedForm />
+      </main>
     </div>
   );
 }
