@@ -10,6 +10,7 @@ const AnimatedForm = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionMessage, setSubmissionMessage] = useState('');
 
   const validate = (name, value) => {
     let newErrors = { ...errors };
@@ -55,12 +56,18 @@ const AnimatedForm = () => {
       ...formData,
       [name]: value,
     });
+    // Limpar mensagem de submissão ao começar a digitar novamente
+    if (submissionMessage) {
+      setSubmissionMessage('');
+    }
     validate(name, value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmissionMessage(''); // Limpar mensagens anteriores
+
     let formIsValid = true;
     const currentErrors = {};
     Object.keys(formData).forEach(fieldName => {
@@ -93,14 +100,18 @@ const AnimatedForm = () => {
 
     if (formIsValid && Object.keys(errors).length === 0) {
       console.log('Formulário enviado:', formData);
+      setSubmissionMessage('Formulário enviado com sucesso!');
+      setFormData({ nome: '', email: '', mensagem: '' });
+      setErrors({});
+      setIsSubmitting(false);
+
       setTimeout(() => {
-        alert('Formulário enviado com sucesso!');
-        setFormData({ nome: '', email: '', mensagem: '' });
-        setErrors({});
-        setIsSubmitting(false);
-      }, 1500);
+        setSubmissionMessage('');
+      }, 3000); // Limpa a mensagem após 3 segundos
     } else {
       console.log('Formulário com erros:', currentErrors);
+      // Poderíamos definir uma mensagem de erro aqui também, se desejado
+      // setSubmissionMessage('Falha ao enviar. Verifique os erros.');
       setIsSubmitting(false);
     }
   };
@@ -108,6 +119,11 @@ const AnimatedForm = () => {
   return (
     <div className="form-container">
       <h2>Formulário Animado</h2>
+      {submissionMessage && (
+        <div className={`submission-message ${Object.keys(errors).length > 0 && !isSubmitting ? 'error' : 'success'}`}>
+          {submissionMessage}
+        </div>
+      )}
       <form onSubmit={handleSubmit} noValidate>
         <div className={`form-group ${errors.nome ? 'has-error' : ''}`}>
           <label htmlFor="nome">Nome:</label>
