@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AnimatedForm from './AnimatedForm';
-import ZupFormPage from './ZupFormPage'; // Nova página
+import ZupFormPage from './ZodFormPage'; // Nova página
 import Header from './Header'; // Novo componente Header
-import './App.css'; // Se você tiver um App.css global
 
 function App() {
   return (
