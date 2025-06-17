@@ -1,36 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { z } from 'zod';
-import './AnimatedForm.css'; // Reutilizando os estilos do formulário animado
+import './AnimatedForm.css';
 
-// Definindo o esquema de validação com Zod
 const formSchema = z.object({
   nomeCompleto: z.string()
     .min(3, { message: "O nome completo deve ter pelo menos 3 caracteres." })
     .regex(/^[a-zA-Z\s]+$/, { message: "O nome completo deve conter apenas letras e espaços." }),
   email: z.string()
     .email({ message: "Formato de email inválido." }),
-  idade: z.coerce // coerce converte string para número antes de validar
+  idade: z.coerce
     .number({ invalid_type_error: "Idade deve ser um número." })
     .int({ message: "Idade deve ser um número inteiro." })
     .min(18, { message: "Você deve ter pelo menos 18 anos." })
     .max(120, { message: "Idade máxima é 120 anos." }),
   website: z.string()
     .url({ message: "URL do website inválida." })
-    .optional() // Campo opcional
-    .or(z.literal('')), // Permite string vazia como válida para campos opcionais
+    .optional()
+    .or(z.literal('')),
 });
 
 const ZupFormPage = () => {
   const [formData, setFormData] = useState({
     nomeCompleto: '',
     email: '',
-    idade: '', // Manter como string no estado inicial para o input
+    idade: '',
     website: '',
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [touched, setTouched] = useState({}); // Para controlar campos tocados
+  const [touched, setTouched] = useState({});
 
   const handleBlur = (e) => {
     const { name } = e.target;
@@ -48,19 +47,19 @@ const ZupFormPage = () => {
       [name]: value,
     });
 
-    // Valida o campo se já foi tocado ou se o formulário está sendo submetido
+  
     if (touched[name] || isSubmitting) {
       validateField(name, value);
     }
   };
 
   const validateField = (name, value) => {
-    // Para validar um campo individual, precisamos pegar a parte relevante do esquema
-    // e o valor correto (Zod espera o tipo correto, ex: número para idade)
+  
+  
     let valueToValidate = value;
     if (name === 'idade' && value !== '') {
       valueToValidate = parseInt(value, 10);
-      if (isNaN(valueToValidate)) valueToValidate = value; // Deixa Zod pegar o erro de tipo
+      if (isNaN(valueToValidate)) valueToValidate = value;
     }
 
 
@@ -82,7 +81,7 @@ const ZupFormPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTouched({ // Marcar todos os campos como tocados para mostrar todos os erros
+    setTouched({
       nomeCompleto: true,
       email: true,
       idade: true,
@@ -102,10 +101,10 @@ const ZupFormPage = () => {
       return;
     }
 
-    // Se a validação passar
+  
     setErrors({});
     console.log('Formulário enviado com Zod:', result.data);
-    // Simular um envio
+  
     await new Promise(resolve => setTimeout(resolve, 1500));
     alert('Formulário (Zod) enviado com sucesso!');
     setFormData({ nomeCompleto: '', email: '', idade: '', website: '' });
@@ -152,7 +151,7 @@ const ZupFormPage = () => {
         <div className={`form-group ${errors.idade ? 'has-error' : ''}`}>
           <label htmlFor="idade">Idade:</label>
           <input
-            type="number" // Usar type="number" para melhor UX em mobile, mas Zod fará a coerção
+            type="number"
             id="idade"
             name="idade"
             value={formData.idade}
