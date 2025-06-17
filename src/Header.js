@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // Alterado de Link para NavLink
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -8,14 +8,13 @@ const Header = () => {
       <nav className="main-nav">
         <ul>
           <li>
-            {/* Usando NavLink para que a classe 'active' seja aplicada */}
             <NavLink to="/animated-form" className={({ isActive }) => isActive ? "active" : ""}>
               <button className="nav-button">Formulário Animado</button>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/zup-form" className={({ isActive }) => isActive ? "active" : ""}>
-              <button className="nav-button">Novo Formulário (Zup)</button>
+            <NavLink to="/zod-form" className={({ isActive }) => isActive ? "active" : ""}>
+              <button className="nav-button">Novo Formulário (Zod)</button>
             </NavLink>
           </li>
         </ul>

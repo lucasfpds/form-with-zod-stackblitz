@@ -5,7 +5,7 @@
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Para conter animações internas se necessário */
+  overflow: hidden;
 }
 
 .form-container h2 {
@@ -17,7 +17,7 @@
 
 .form-group {
   margin-bottom: 20px;
-  position: relative; /* Para posicionamento da mensagem de erro */
+  position: relative;
 }
 
 .form-group label {
@@ -47,12 +47,11 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-/* Estilo para campos com erro */
 .form-group.has-error input,
 .form-group.has-error textarea,
 .form-group input.input-error,
 .form-group textarea.input-error {
-  border-color: #dc3545; /* Vermelho para erro */
+  border-color: #dc3545;
   background-color: #fff6f6;
 }
 
@@ -66,7 +65,7 @@
 
 .error-message {
   display: block;
-  color: #dc3545; /* Vermelho para erro */
+  color: #dc3545;
   font-size: 0.85em;
   margin-top: 6px;
   opacity: 0;
@@ -77,7 +76,7 @@
 
 .form-group.has-error .error-message {
   opacity: 1;
-  max-height: 50px; /* Ajuste conforme necessário para o conteúdo da mensagem */
+  max-height: 50px;
   margin-top: 6px;
 }
 
@@ -108,7 +107,6 @@
   cursor: not-allowed;
 }
 
-/* Animação de entrada para o formulário (opcional) */
 .form-container {
   animation: fadeInForm 0.8s ease-out forwards;
 }
@@ -124,16 +122,14 @@
   }
 }
 
-/* Animação sutil para os campos ao focar */
 .form-group input,
 .form-group textarea {
-  position: relative; /* Para z-index se necessário */
+  position: relative;
 }
 
 .form-group input:focus + label,
 .form-group textarea:focus + label,
-.form-group input:not(:placeholder-shown) + label, /* Para quando já tem valor */
+.form-group input:not(:placeholder-shown) + label,
 .form-group textarea:not(:placeholder-shown) + label {
-  /* Exemplo de animação de label (requer ajuste no HTML para label após input) */
-  /* Ou pode ser usado para outros efeitos */
+
 }

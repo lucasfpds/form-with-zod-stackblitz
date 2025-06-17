@@ -3,7 +3,7 @@
   padding: 15px 30px;
   color: white;
   display: flex;
-  justify-content: center; /* Centraliza a navegação */
+  justify-content: center;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 20px; /* Espaço entre os botões */
+  gap: 20px;
 }
 
 .main-nav li {
@@ -21,7 +21,7 @@
 }
 
 .nav-button {
-  background-color: #61dafb; /* Cor de destaque React */
+  background-color: #61dafb;
   color: #282c34;
   border: none;
   padding: 10px 20px;
@@ -46,7 +46,6 @@
   transform: translateY(0);
 }
 
-/* Opcional: Estilo para o link ativo, se desejar */
 .main-nav a.active .nav-button {
   background-color: #007bff;
   color: white;

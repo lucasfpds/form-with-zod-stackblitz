@@ -61,7 +61,6 @@ const AnimatedForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Validar todos os campos antes de submeter
     let formIsValid = true;
     const currentErrors = {};
     Object.keys(formData).forEach(fieldName => {
@@ -94,8 +93,6 @@ const AnimatedForm = () => {
 
     if (formIsValid && Object.keys(errors).length === 0) {
       console.log('Formulário enviado:', formData);
-      // Aqui você pode adicionar a lógica de envio para um backend, por exemplo.
-      // Simular um envio
       setTimeout(() => {
         alert('Formulário enviado com sucesso!');
         setFormData({ nome: '', email: '', mensagem: '' });
