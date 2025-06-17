@@ -1,0 +1,53 @@
+.main-header {
+  background-color: #282c34;
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: center; /* Centraliza a navegação */
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px; /* Espaço entre os botões */
+}
+
+.main-nav li {
+  display: inline-block;
+}
+
+.nav-button {
+  background-color: #61dafb; /* Cor de destaque React */
+  color: #282c34;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #21a1f1;
+  transform: translateY(-1px);
+}
+
+.nav-button:active {
+  background-color: #0c82d1;
+  transform: translateY(0);
+}
+
+/* Opcional: Estilo para o link ativo, se desejar */
+.main-nav a.active .nav-button {
+  background-color: #007bff;
+  color: white;
+}
